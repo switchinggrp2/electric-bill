@@ -1,0 +1,100 @@
+#include <stdio.h>
+
+int main() {
+    char name[30];
+    float rate_per_unit;
+    float fan_units, ac_units, fridge_units, tv_units, tubelight_units;
+    float total_bill;
+    float sum_units;
+    int id[8];
+    int type;
+    
+   printf("enter your name; ");
+   fgets(name, sizeof(name), stdin);
+   
+   printf("enter consumer id; ");
+   scanf("%s",&id);
+
+   printf("Is your meter commercial or domestic? 1 for commercial and 2 for domestic ");
+   scanf("%d",&type );
+    if(type==1) {
+        if(sum_units<100) {
+            rate_per_unit = 0;
+        }
+        else if(sum_units<500 && sum_units>100) {
+            rate_per_unit = 10;
+        }
+        else if(sum_units>500) {
+            rate_per_unit = 25;
+        }
+    }
+   else if(type==2) {
+        if(sum_units<500) {
+         rate_per_unit = 25;
+     } 
+     else if(sum_units<2000 && sum_units>500) {
+       rate_per_unit = 40;
+    }
+    else if(sum_units>2000) {
+        rate_per_unit = 65;
+    }
+   }
+   else {
+       printf("invalid value");
+       return 0;
+   }
+    
+    printf("Enter power units consumed for Fan: ");
+    scanf("%f", &fan_units);
+    
+    printf("Enter power units consumed for AC: ");
+    scanf("%f", &ac_units);
+    
+    printf("Enter power units consumed for Fridge: ");
+    scanf("%f", &fridge_units);
+    
+    printf("Enter power units consumed for TV: ");
+    scanf("%f", &tv_units);
+    
+    printf("Enter power units consumed for Tubelight: ");
+    scanf("%f", &tubelight_units);
+    
+    sum_units = fan_units + ac_units + fridge_units + tv_units + tubelight_units;
+if(type==1) {
+        if(sum_units<100) {
+            rate_per_unit = 0;
+            printf("congrats u got free electricity\n");
+        }
+        else if(sum_units<500 && sum_units>100) {
+            rate_per_unit = 10;
+        
+        }
+        else if(sum_units>500) {
+            rate_per_unit = 25; 
+            printf("If you this need much electricity, just install  solar panels at your place\n");
+        }
+    }
+   else if(type==2) {
+        if(sum_units<500) {
+         rate_per_unit = 25;
+     } 
+     else if(sum_units<2000 && sum_units>500) {
+       rate_per_unit = 40;
+    }
+    else if(sum_units>2000) {
+        rate_per_unit = 65;
+    }
+   }
+   else {
+       printf("invalid value");
+       return 0;
+   }
+    
+
+    total_bill = (sum_units) * rate_per_unit;
+    
+    printf("your consumer id: %s\n", id);
+    printf("Total electricity bill: %.2f\n", total_bill);
+
+    return 0;
+}
